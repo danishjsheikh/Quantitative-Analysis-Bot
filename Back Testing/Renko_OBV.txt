@@ -1,0 +1,22 @@
+IntraDay Trading Stratergy 
+
+Technical Indicator Needed:
+- ATR {max(high-low,high-prevclose,low-prevclose)}
+- Renko (Give Trend Based On Brick Size Irrespsctive Of Time) {from stocktrends import Renko, for brick size 3*ATR}
+- OBV(On Balance Volume -> Leading Indicator) {cumilative sum of ((dailyreturn>=0?1:-1)*volume)}
+
+KPI Needed:
+- CAGR {((ending_value/begining_value)^1/n)-1}
+- MAX Draw Drown {Difference Betwwen Highest High Followed By Lowest Low}
+- Volatilty(Annualised) {STD of CAGR * root(n)}
+- Sharpe {(cagr-riskfreerate/volatility)}
+
+Algo:
+Buy Signal:
+	Renko Bar Greater Than or Equal to 2 &
+	5 Day OBV Slope Greater Than 30 Degrees
+	Exit If Renko Bar Is Less Than 2
+Sell Signal:
+	Renko Bar Less Than or Equal to -2 &
+	5 Day OBV Slope Less Than -30 Degrees
+	Exit If Renko Bar Is Greater Than -2

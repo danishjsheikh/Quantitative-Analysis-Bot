@@ -1,0 +1,26 @@
+IntraDay Trading Stratergy 
+
+Technical Indicator Needed:
+- ATR {max(high-low,high-prevclose,low-prevclose)}
+- Renko (Give Trend Based On Brick Size Irrespsctive Of Time) {from stocktrends import Renko, for brick size 3*ATR}
+- MACD(Maximum Average Convergence Divergrnce -> Lagging Indicator) {diff of ((fast moving average - slow moving average)}
+- Signal Line {moving avg of MACD}
+Fast Moving Average 12, Slow Moving Average 26 and Signal Line 9 (Here Moving Average Is Exponential Weighted Moving Average)
+
+KPI Needed:
+- CAGR {((ending_value/begining_value)^1/n)-1}
+- MAX Draw Drown {Difference Betwwen Highest High Followed By Lowest Low}
+- Volatilty(Annualised) {STD of CAGR * root(n)}
+- Sharpe {(cagr-riskfreerate/volatility)}
+Buy Signal:
+	Renko Bar Greater Than or Equal to 2 &
+	MACD is above signal line &
+	MACD line slope(over 5 period) is greater than Signal line slope(over 5 period)
+	Exit If MACD is Below signal line &
+	MACD line slope(over 5 period) is less than Signal line slope(over 5 period)
+Sell Signal:
+	Renko Bar Less Than or Equal to -2 &
+	MACD is above signal line &
+	MACD line slope(over 5 period) is less than Signal line slope(over 5 period)
+	Exit If MACD is Above Signal line &
+	MACD line slope(over 5 period) is greater than Signal line slope(over 5 period)

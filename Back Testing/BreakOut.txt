@@ -1,0 +1,42 @@
+IntraDay Trading Stratergy 
+Technical Indicator Needed:
+- ATR {max(high-low,high-prevclose,low-prevclose)}
+
+KPI Needed:
+- CAGR {((ending_value/begining_value)^1/n)-1}
+- MAX Draw Drown {Difference Betwwen Highest High Followed By Lowest Low}
+- Volatilty(Annualised) {STD of CAGR * root(n)}
+- Sharpe {(cagr-riskfreerate/volatility)}
+
+Algo:
+Step 1:- Caluclate rolling max closed price,rolling min closed price,rolling max volume.
+Step 2.1:- If there is no signal add 0 to returns for that candle of ticker
+   2.1.1:- Checking price breakout i.e. If high price of that candle is greater than equal to roll max price & 
+	   Checking volume breakout i.e If current volume is greater than 1.5 times of prev roll max volume
+	   then Buy
+   2.1.2:- Checking price breakout i.e. If low price of that candle is less than equal to roll min price & 
+	   Checking volume breakout i.e If current volume is greater than 1.5 times of prev roll max volume
+	   then Sell
+Step 2.2:- If there is buy signal of ticker 
+   2.2.1:- Checking for trailing stop loss i.e. If low price of that candle is smaller prev close price - prev atr 
+	   then change Buy signal to no signal/NULL signal 
+	   Calculate and store return, return = stop loss point i.e. (prev close price - prev atr), 
+           now (divide return by prev close)-1 to get return perctange 
+   2.2.2:- Checking if reversal is triggered i.e. If low price of that candle is less than equal to roll min price & 
+	   Checking volume breakout i.e If current volume is greater than 1.5 times of prev roll max volume
+	   then change Buy signal to Sell signal &
+           Calculate and store return, return perctange = (curr close price/prev close price)-1 
+   2.2.3:- If both conditions fails Calculate and store return, return perctange = (curr close price/prev close price)-1 
+
+Step 2.3:- If there is Sell signal of ticker 
+   2.3.1:- Checking for take profit order i.e. If high price of that candle is greater prev close price + prev atr 
+	   then change Sell signal to no signal/NULL signal 
+	   Calculate and store return, return = stop loss poit i.e. (prev close price - prev atr), 
+           now (divide prev close by return)-1 to get return perctange 
+   2.3.2:- Checking if reversal is triggered i.e. If high price of that candle is greater than equal to roll max price & 
+	   Checking volume breakout i.e If current volume is greater than 1.5 times of prev roll max volume
+	   then change Sell signal to Buy signal &
+	   Calculate and store return, return perctange = (prev close price/curr close)-1 
+   2.3.3:- If both conditions fails Calculate and store return, return perctange = (prev close price/curr close price)-1 
+
+
