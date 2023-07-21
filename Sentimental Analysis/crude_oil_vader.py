@@ -1,7 +1,7 @@
 """
 Web scraping crude oil news and using VADER for sentiment analysis
 
-@author: Mayank Rasu
+@author: Danish Sheikh
 """
 
 # import necessary libraries
