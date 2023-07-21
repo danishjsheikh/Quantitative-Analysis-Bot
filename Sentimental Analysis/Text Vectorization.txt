@@ -1,16 +1,8 @@
 Text Vectorization
-   Vectorization is the first step of text analysis
-   Tokenization - the process of splitting text into relevant units
- 1)
-   (characters, words, phrases or others) which are called tokens
- 2)
-   Lemmatization - removing the inflectional forms of the words
- 3)
-   Stemming - keeping only the root word and rejecting other forms
- 4)
-   Stop words - removing non sentiment showing words such as
-   connector words, subject verbs etc.
- 5)
-   Normalization - cleaning data such as removing emoticons, extra
-   punctuation marks etc.
- The vectorised output of a document will be a vector of words.
+Vectorization is the first step of text analysis 
+1) Tokenization - the process of splitting text into relevant units (characters, words, phrases or others) which are called tokens
+2)Lemmatization - removing the inflectional forms of the words
+3) Stemming - keeping only the root word and rejecting other forms
+4) Stop words - removing non sentiment showing words such as connector words, subject verbs etc.
+5) Normalization - cleaning data such as removing emoticons, extra punctuation marks etc. 
+The vectorised output of a document will be a vector of words.
